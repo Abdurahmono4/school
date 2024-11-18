@@ -30,7 +30,7 @@ function Courses() {
             {/* Course 1 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 1"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
@@ -52,7 +52,7 @@ function Courses() {
             {/* Course 2 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 2"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
@@ -74,7 +74,7 @@ function Courses() {
             {/* Course 3 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 3"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
@@ -96,7 +96,7 @@ function Courses() {
             {/* Course 4 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 4"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
@@ -118,7 +118,7 @@ function Courses() {
             {/* Course 5 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 5"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
@@ -140,7 +140,7 @@ function Courses() {
             {/* Course 6 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
               <img
-                src="../public/image/course.jpg"
+                src="/image/course.jpg"
                 alt="Course 6"
                 className="w-full h-48 object-cover rounded-md mb-4"
               />

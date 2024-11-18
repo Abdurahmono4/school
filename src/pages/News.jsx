@@ -7,21 +7,21 @@ function News() {
       date: "November 1, 2024",
       description:
         "We are excited to announce new courses starting next semester. Check them out and enroll today!",
-      image: "../public/image/courseAnno.png", // Placeholder image URL
+      image: "/image/courseAnno.png", // Corrected path
     },
     {
       title: "School Annual Event Coming Soon",
       date: "October 20, 2024",
       description:
         "Our annual event is just around the corner. Stay tuned for details and save the date!",
-      image: "../public/image/annual.jpg", // Placeholder image URL
+      image: "/image/annual.jpg", // Corrected path
     },
     {
       title: "Student Achievements Recognition",
       date: "September 15, 2024",
       description:
         "Join us in celebrating the achievements of our talented students. We are proud of their hard work and success.",
-      image: "../public/image/achievement.jpg", // Placeholder image URL
+      image: "/image/achievement.jpg", // Corrected path
     },
   ];
 

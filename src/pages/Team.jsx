@@ -26,8 +26,8 @@ function Team() {
             {/* Team Member 1 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher.avif"
-                alt="Team Member"
+                src="/image/teacher.avif" // Corrected path
+                alt="John Doe"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
@@ -39,11 +39,12 @@ function Team() {
                 school towards excellence in education.
               </p>
             </div>
+
             {/* Team Member 2 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher.avif"
-                alt="Team Member"
+                src="/image/teacher.avif" // Corrected path
+                alt="Jane Smith"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
@@ -55,11 +56,12 @@ function Team() {
                 excel in STEM fields.
               </p>
             </div>
+
             {/* Team Member 3 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher.avif"
-                alt="Team Member"
+                src="/image/teacher.avif" // Corrected path
+                alt="Mark Johnson"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
@@ -71,11 +73,12 @@ function Team() {
                 making complex topics easy for students to understand.
               </p>
             </div>
+
             {/* Team Member 4 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher.avif"
-                alt="Team Member"
+                src="/image/teacher.avif" // Corrected path
+                alt="Sarah Lee"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
@@ -87,11 +90,12 @@ function Team() {
                 writing among her students.
               </p>
             </div>
+
             {/* Team Member 5 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher.avif"
-                alt="Team Member"
+                src="/image/teacher.avif" // Corrected path
+                alt="Emily Davis"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
@@ -103,11 +107,12 @@ function Team() {
                 events to life for her students.
               </p>
             </div>
+
             {/* Team Member 6 */}
             <div className="p-6 bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-xl hover:bg-gradient-to-t from-blue-50 via-blue-100 to-white text-center transition-all duration-300">
               <img
-                src="../public/image/teacher1.webp"
-                alt="Team Member"
+                src="/image/teacher1.webp" // Corrected path
+                alt="David Williams"
                 className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-4 border-4 border-blue-600 object-cover transition-all duration-300"
               />
               <h3 className="text-xl font-semibold text-blue-600 mb-2">
