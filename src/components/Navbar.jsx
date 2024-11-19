@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"; // i18n qo‘llash uchun import
 function Navbar() {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const languages = [
-    { code: "en", name: "English", flag: "EN" },
+    { code: "en", name: "English", flag: "GB" },
     { code: "uz", name: "O‘zbek", flag: "🇺🇿" },
     { code: "ru", name: "Русский", flag: "🇷🇺" },
   ];
