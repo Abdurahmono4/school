@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link as ScrollLink, Element } from "react-scroll";
+import { useTranslation } from "react-i18next"; // Tarjima hooki
 import About from "./About";
 import Team from "./Team";
 import Courses from "./Courses";
@@ -16,6 +17,7 @@ const backgroundImages = [
 
 function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { t } = useTranslation(); // Tarjima hooki
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,89 +40,80 @@ function Home() {
         }}
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>{" "}
-        {/* Dark overlay to highlight text */}
-        <div className="relative z-10 text-center px-6 lg:px-12 transition-all duration-700 ease-in-out opacity-100">
+        {/* Dark overlay */}
+        <div className="relative z-10 text-center px-6 lg:px-12">
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 animate__animated animate__fadeIn animate__delay-1s">
-            Welcome to SchoolName
+            {t("welcome_message")} {/* Tarjima */}
           </h1>
           <p className="text-lg lg:text-xl text-white mb-8 animate__animated animate__fadeIn animate__delay-2s">
-            Quality education for a brighter future. Join our community of
-            learners today!
+            {t("hero_subtitle")}
           </p>
           <ScrollLink
-            to="about-section"
+            to="about"
             smooth={true}
             duration={500}
             className="btn btn-primary text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 cursor-pointer transition-all duration-300 transform hover:scale-105"
           >
-            Learn More
+            {t("learn_more")}
           </ScrollLink>
         </div>
       </div>
 
-      {/* Features Section with Animations */}
+      {/* Features Section */}
       <div className="py-16 bg-white">
         <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-800 mb-12 transition-transform duration-500 ease-in-out hover:scale-105">
-          Why Choose Us?
+          {t("why_choose_us")}
         </h2>
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:px-12">
-          <div className="p-6 bg-gray-100 rounded-lg shadow-md text-center transition-transform duration-500 ease-in-out hover:scale-105">
-            <h3 className="text-xl font-semibold text-blue-600 mb-4">
-              Expert Teachers
-            </h3>
-            <p className="text-gray-600">
-              Our faculty consists of highly skilled and experienced educators
-              dedicated to your success.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg shadow-md text-center transition-transform duration-500 ease-in-out hover:scale-105">
-            <h3 className="text-xl font-semibold text-blue-600 mb-4">
-              Modern Facilities
-            </h3>
-            <p className="text-gray-600">
-              Experience top-notch infrastructure, smart classrooms, and
-              well-equipped labs.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-lg shadow-md text-center transition-transform duration-500 ease-in-out hover:scale-105">
-            <h3 className="text-xl font-semibold text-blue-600 mb-4">
-              Holistic Education
-            </h3>
-            <p className="text-gray-600">
-              We focus on academic excellence as well as personal and social
-              development.
-            </p>
-          </div>
+          {[
+            {
+              title: t("expert_teachers"),
+              description: t("expert_teachers_desc"),
+            },
+            {
+              title: t("modern_facilities"),
+              description: t("modern_facilities_desc"),
+            },
+            {
+              title: t("holistic_education"),
+              description: t("holistic_education_desc"),
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="p-6 bg-gray-100 rounded-lg shadow-md text-center transition-transform duration-500 ease-in-out hover:scale-105"
+            >
+              <h3 className="text-xl font-semibold text-blue-600 mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* News Section */}
-      <Element name="about-section">
+      {/* Dynamic Sections */}
+      <Element name="news">
         <News />
       </Element>
 
-      {/* About Section */}
-      <Element name="about-section">
+      <Element name="about">
         <About />
       </Element>
 
-      {/* Books Section */}
-      <Element name="about-section">
+      <Element name="books">
         <Books />
       </Element>
 
-      {/* Team Section */}
-      <Element name="about-section">
+      <Element name="team">
         <Team />
       </Element>
 
-      {/* Courses Section */}
-      <Element name="about-section">
+      <Element name="courses">
         <Courses />
       </Element>
 
-      {/* Contact Section */}
-      <Element name="about-section">
+      <Element name="contact">
         <Contact />
       </Element>
     </div>

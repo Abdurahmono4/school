@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // i18n qo‘llash uchun import
 
 function Navbar() {
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const languages = [
+    { code: "en", name: "English", flag: "EN" },
+    { code: "uz", name: "O‘zbek", flag: "🇺🇿" },
+    { code: "ru", name: "Русский", flag: "🇷🇺" },
+  ];
+
+  const { t, i18n } = useTranslation(); // Tarjima funksiyalari
+
+  const selectLanguage = (lang) => {
+    console.log(`Til o'zgaryapti: ${lang}`); // Konsol uchun
+    i18n.changeLanguage(lang); // Tilni o'zgartirish
+  };
   return (
-    <div className="navbar bg-base-100 border-b border-gray-200">
-      {/* Left side: Logo and mobile dropdown */}
-      <div className="navbar-start">
+    <div className="navbar bg-white shadow-lg border-b border-gray-200">
+      {/* Left Side: Logo */}
+      <div className="navbar-start flex items-center">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <button
+            tabIndex={0}
+            className="btn btn-ghost lg:hidden flex items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -22,102 +39,124 @@ function Navbar() {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
-          </div>
+          </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-white rounded-box w-52 z-50"
           >
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" className="hover:text-blue-600">
+                {t("home")}
+              </Link>
             </li>
             <li>
-              <Link to="/news">News</Link> {/* Added News link */}
+              <Link to="/news" className="hover:text-blue-600">
+                {t("news")}
+              </Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about" className="hover:text-blue-600">
+                {t("about")}
+              </Link>
             </li>
             <li>
-              <Link to="/team">Our Team</Link>
+              <Link to="/team" className="hover:text-blue-600">
+                {t("team")}
+              </Link>
             </li>
             <li>
-              <Link to="/courses">Courses</Link>
+              <Link to="/courses" className="hover:text-blue-600">
+                {t("courses")}
+              </Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" className="hover:text-blue-600">
+                {t("contact")}
+              </Link>
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl font-bold text-gray-800">
-          SchoolName
+        <Link to="/" className="text-2xl font-semibold text-gray-800">
+          <span className="text-blue-500">Smart</span>School
         </Link>
       </div>
 
-      {/* Center: Desktop Menu */}
+      {/* Center Menu */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-6 text-lg">
           <li>
-            <Link to="/" className="hover:text-blue-600 transition-colors">
-              Home
+            <Link to="/" className="hover:text-blue-600 transition">
+              {t("home")}
             </Link>
           </li>
           <li>
-            <Link to="/news" className="hover:text-blue-600 transition-colors">
-              News
-            </Link>{" "}
-            {/* Added News link */}
-          </li>
-          <li>
-            <Link to="/about" className="hover:text-blue-600 transition-colors">
-              About
+            <Link to="/news" className="hover:text-blue-600 transition">
+              {t("news")}
             </Link>
           </li>
           <li>
-            <Link to="/team" className="hover:text-blue-600 transition-colors">
-              Our Team
+            <Link to="/about" className="hover:text-blue-600 transition">
+              {t("about")}
             </Link>
           </li>
           <li>
-            <Link
-              to="/courses"
-              className="hover:text-blue-600 transition-colors"
-            >
-              Courses
+            <Link to="/team" className="hover:text-blue-600 transition">
+              {t("team")}
             </Link>
           </li>
           <li>
-            <Link
-              to="/contact"
-              className="hover:text-blue-600 transition-colors"
-            >
-              Contact
+            <Link to="/courses" className="hover:text-blue-600 transition">
+              {t("courses")}
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-blue-600 transition">
+              {t("contact")}
             </Link>
           </li>
         </ul>
       </div>
 
-      {/* Right side: Optional Additional Links or Icons */}
+      {/* Right Side: Language Selector */}
       <div className="navbar-end flex items-center space-x-4">
-        {/* Example of adding an optional icon or link */}
-        <a
-          href="https://www.socialmedia.com"
-          className="text-gray-600 hover:text-blue-600"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            className="flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg space-x-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 3v12l5-5 5 5V3"
-            />
-          </svg>
-        </a>
-        {/* Optionally, add more links or icons for features like notifications or a "Contact Us" button */}
+            <span className="text-lg">
+              {languages.find((lang) => lang.code === selectedLanguage)?.flag}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-2 p-2 shadow-lg bg-white rounded-lg w-32 z-50"
+          >
+            {languages.map((lang) => (
+              <li
+                key={lang.code}
+                className="flex items-center space-x-2 cursor-pointer hover:bg-gray-100 px-2 py-1"
+                onClick={() => selectLanguage(lang.code)}
+              >
+                <span>{lang.flag}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

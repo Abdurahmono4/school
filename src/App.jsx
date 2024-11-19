@@ -1,52 +1,45 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Team from "./pages/Team";
-import Courses from "./pages/Courses";
-import News from "./pages/News"; // News sahifasini import qilish
 import MainLayout from "./layout/MainLayout";
-import Footer from "./components/Footer";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
+
+// Sahifalarni lazy yuklash
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Team = lazy(() => import("./pages/Team"));
+const TeamMember = lazy(() => import("./pages/TeamMember"));
+const Courses = lazy(() => import("./pages/Courses"));
+const News = lazy(() => import("./pages/News"));
+const NotFound = lazy(() => import("./pages/NotFound")); // 404 sahifasi
+
+// Routerni yaratish
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />, // Umumiy layout
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "team", element: <Team /> },
+      { path: "team/:id", element: <TeamMember /> }, // Dinamik routing
+      { path: "courses", element: <Courses /> },
+      { path: "news", element: <News /> },
+      { path: "*", element: <NotFound /> }, // 404 sahifasi
+    ],
+  },
+]);
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />, // Bu layoutdagi barcha sahifalar
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "contact",
-          element: <Contact />,
-        },
-        {
-          path: "team",
-          element: <Team />,
-        },
-        {
-          path: "courses",
-          element: <Courses />,
-        },
-        {
-          path: "news", // Yangiliklar sahifasi
-          element: <News />,
-        },
-      ],
-    },
-  ]);
-
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <I18nextProvider i18n={i18n}>
+      {/* Suspense butun routerni o‘raydi */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </I18nextProvider>
   );
 }
 

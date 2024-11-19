@@ -1,27 +1,27 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function News() {
+  const { t } = useTranslation(); // Tarjimani ishlatish
+
   const newsData = [
     {
-      title: "New Course Announcement!",
-      date: "November 1, 2024",
-      description:
-        "We are excited to announce new courses starting next semester. Check them out and enroll today!",
-      image: "/image/courseAnno.png", // Corrected path
+      title: t("news_course_announcement"),
+      date: t("news_course_date"),
+      description: t("news_course_description"),
+      image: "/image/courseAnno.png",
     },
     {
-      title: "School Annual Event Coming Soon",
-      date: "October 20, 2024",
-      description:
-        "Our annual event is just around the corner. Stay tuned for details and save the date!",
-      image: "/image/annual.jpg", // Corrected path
+      title: t("news_event_announcement"),
+      date: t("news_event_date"),
+      description: t("news_event_description"),
+      image: "/image/annual.jpg",
     },
     {
-      title: "Student Achievements Recognition",
-      date: "September 15, 2024",
-      description:
-        "Join us in celebrating the achievements of our talented students. We are proud of their hard work and success.",
-      image: "/image/achievement.jpg", // Corrected path
+      title: t("news_achievement_title"),
+      date: t("news_achievement_date"),
+      description: t("news_achievement_description"),
+      image: "/image/achievement.jpg",
     },
   ];
 
@@ -29,7 +29,7 @@ function News() {
     <div className="bg-gray-50 min-h-screen py-16">
       <div className="container mx-auto px-6 lg:px-12">
         <h1 className="text-4xl font-bold text-blue-600 text-center mb-8">
-          Latest News
+          {t("latest_news")} {/* Tarjimani chaqirish */}
         </h1>
 
         {/* News Grid */}
