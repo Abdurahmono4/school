@@ -1,23 +1,33 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // i18n qo‘llash uchun import
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
+  const [darkMode, setDarkMode] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const languages = [
-    { code: "en", name: "English", flag: "GB" },
+    { code: "en", name: "English", flag: "🇬🇧" },
     { code: "uz", name: "O‘zbek", flag: "🇺🇿" },
     { code: "ru", name: "Русский", flag: "🇷🇺" },
   ];
 
-  const { t, i18n } = useTranslation(); // Tarjima funksiyalari
+  const { t, i18n } = useTranslation();
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   const selectLanguage = (lang) => {
-    console.log(`Til o'zgaryapti: ${lang}`); // Konsol uchun
-    i18n.changeLanguage(lang); // Tilni o'zgartirish
+    i18n.changeLanguage(lang);
+    setSelectedLanguage(lang);
   };
+
   return (
-    <div className="navbar bg-white shadow-lg border-b border-gray-200">
+    <div
+      className={`navbar ${
+        darkMode ? "bg-gray-900 text-gray-200" : "bg-white text-gray-800"
+      } shadow-lg border-b`}
+    >
       {/* Left Side: Logo */}
       <div className="navbar-start flex items-center">
         <div className="dropdown">
@@ -42,7 +52,9 @@ function Navbar() {
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow-lg bg-white rounded-box w-52 z-50"
+            className={`menu menu-sm dropdown-content mt-3 p-4 rounded-lg ${
+              darkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-800"
+            } w-60 shadow-xl`}
           >
             <li>
               <Link to="/" className="hover:text-blue-600">
@@ -76,7 +88,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-semibold text-gray-800">
+        <Link to="/" className="text-2xl font-semibold">
           <span className="text-blue-500">Smart</span>School
         </Link>
       </div>
@@ -117,8 +129,47 @@ function Navbar() {
         </ul>
       </div>
 
-      {/* Right Side: Language Selector */}
+      {/* Right Side: Language Selector and Dark Mode Toggle */}
       <div className="navbar-end flex items-center space-x-4">
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleDarkMode}
+          className="p-2 rounded-lg bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+        >
+          {darkMode ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-yellow-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 3v2m0 14v2m9-9h-2m-14 0H3m16.243-6.243l-1.414 1.414m-12.02-.707l-1.415-1.415m16.243 12.021l-1.415 1.415M6.757 6.757l-1.415 1.415"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-gray-800"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.293 20.293a8 8 0 110-16 8 8 0 010 16z"
+              />
+            </svg>
+          )}
+        </button>
+
+        {/* Language Selector */}
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -144,7 +195,9 @@ function Navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-2 p-2 shadow-lg bg-white rounded-lg w-32 z-50"
+            className={`menu menu-sm dropdown-content mt-2 p-2 shadow-lg ${
+              darkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-800"
+            } rounded-lg w-32 z-50`}
           >
             {languages.map((lang) => (
               <li
